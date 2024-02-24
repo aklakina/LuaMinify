@@ -62,12 +62,12 @@ if #arg == 1 then
 	--
 	print("Minification complete")
 
-elseif #arg == 2 then
+elseif #arg == 2 or #arg == 3 then
 	--keep the user from accidentally overwriting their non-minified file with 
 	if arg[1]:find("_min") then
 		print("Did you mix up the argument order?\n"..
 		      "Current command will minify `"..arg[1].."` and OVERWRITE `"..arg[2].."` with the results")
-		while true do
+		while true and not (arg[3] == "true" or arg[3] == "force") do
 			io.write("Confirm (yes/cancel): ")
 			local msg = io.read('*line')
 			if msg == 'yes' then
